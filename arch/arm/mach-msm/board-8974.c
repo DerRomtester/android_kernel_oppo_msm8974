@@ -25,8 +25,6 @@
 #include <linux/regulator/consumer.h> //ranfei
 #endif
 #include <linux/regulator/krait-regulator.h>
-#include <linux/msm_tsens.h>
-#include <linux/msm_thermal.h>
 #ifdef CONFIG_VENDOR_EDIT
 #include <linux/boot_mode.h>
 //Zhilong.Zhang@OnlineRd.Driver, 2013/12/03, Add for ram_console device
@@ -467,8 +465,6 @@ void __init msm8974_add_drivers(void)
 		msm_clock_init(&msm8974_rumi_clock_init_data);
 	else
 		msm_clock_init(&msm8974_clock_init_data);
-	tsens_tm_init_driver();
-	msm_thermal_device_init();
 }
 
 static struct of_dev_auxdata msm_hsic_host_adata[] = {
@@ -508,8 +504,6 @@ static struct of_dev_auxdata msm8974_auxdata_lookup[] __initdata = {
 	OF_DEV_AUXDATA("qcom,qseecom", 0xFE806000, \
 			"qseecom", NULL),
 	OF_DEV_AUXDATA("qcom,mdss_mdp", 0xFD900000, "mdp.0", NULL),
-	OF_DEV_AUXDATA("qcom,msm-tsens", 0xFC4A8000, \
-			"msm-tsens", NULL),
 	OF_DEV_AUXDATA("qcom,qcedev", 0xFD440000, \
 			"qcedev.0", NULL),
 	OF_DEV_AUXDATA("qcom,hsic-host", 0xF9A00000, \
